@@ -24,9 +24,8 @@
 
 package org.jenkins_ci.plugins.extra_run_conditions.extendedcausecondition;
 
-import hudson.DescriptorExtensionList;
+
 import hudson.Extension;
-import hudson.ExtensionPoint;
 import hudson.Util;
 import hudson.model.Cause.UpstreamCause;
 import hudson.model.Cause.UserCause;
@@ -50,6 +49,7 @@ import org.kohsuke.stapler.QueryParameter;
  *
  * @author Chris Johnson
  */
+@Extension
 public class ExtendedCauseCondition extends AlwaysPrebuildRunCondition {
 
     private BuildCauseCondition condition;
@@ -66,6 +66,8 @@ public class ExtendedCauseCondition extends AlwaysPrebuildRunCondition {
         this.exclusiveCause = exclusiveCause;
     }
 
+    public ExtendedCauseCondition() {
+    }
     /**
      * Returns the condition for the UI to display
      *
@@ -112,42 +114,7 @@ public class ExtendedCauseCondition extends AlwaysPrebuildRunCondition {
         }
     }
 
-    /**
-     * Abstract Build Cause condition that checks the build condition
-     *
-     * @author Chris Johnson
-     */
-    public static abstract class BuildCauseCondition implements Describable<BuildCauseCondition>, ExtensionPoint {
 
-        public static DescriptorExtensionList<BuildCauseCondition, BuildCauseConditionDescriptor> all() {
-            return Hudson.getInstance().<BuildCauseCondition, BuildCauseConditionDescriptor>getDescriptorList(BuildCauseCondition.class);
-        }
-
-        /**
-         * Performs the check of the condition
-         *
-         * @return true if the condition is allowed
-         *         false if not allowed to proceed.
-         */
-        public abstract boolean runPerform(final AbstractBuild<?, ?> build, final BuildListener listener) throws InterruptedException;
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public Descriptor<BuildCauseCondition> getDescriptor() {
-            return (Descriptor) Hudson.getInstance().getDescriptor(getClass());
-        }
-    }
-    public static abstract class BuildCauseConditionDescriptor extends Descriptor<BuildCauseCondition> {
-
-        protected BuildCauseConditionDescriptor() {
-        }
-
-        protected BuildCauseConditionDescriptor(Class<? extends BuildCauseCondition> clazz) {
-            super(clazz);
-        }
-    }
     /**
      * Looks to see if any of the causes of the build match the passed in user list
      * When the user list is empty it assumes that any user build matches.
