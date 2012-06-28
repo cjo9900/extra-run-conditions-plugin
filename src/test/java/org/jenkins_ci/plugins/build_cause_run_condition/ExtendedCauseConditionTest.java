@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 
-package  org.jenkins_ci.plugins.extra_run_conditions.extendedcausecondition;
+package  org.jenkins_ci.plugins.build_cause_run_condition;
 
 import hudson.model.Cause.LegacyCodeCause;
 import hudson.model.Cause.RemoteCause;
@@ -36,8 +36,8 @@ import java.util.List;
 import org.acegisecurity.Authentication;
 import org.acegisecurity.context.SecurityContextHolder;
 import org.acegisecurity.providers.UsernamePasswordAuthenticationToken;
-import org.jenkins_ci.plugins.extra_run_conditions.extendedcausecondition.ExtendedCauseCondition.UpstreamCauseCondition;
-import org.jenkins_ci.plugins.extra_run_conditions.extendedcausecondition.ExtendedCauseCondition.UserBuildCauseCondition;
+import org.jenkins_ci.plugins.build_cause_run_condition.ExtendedCauseCondition.UpstreamCauseCondition;
+import org.jenkins_ci.plugins.build_cause_run_condition.ExtendedCauseCondition.UserBuildCauseCondition;
 
 import org.junit.Test;
 import org.jvnet.hudson.test.HudsonTestCase;

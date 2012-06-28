@@ -32,12 +32,12 @@
         <version>1.409</version>
     </parent>
 
-    <artifactId>extra-run-conditions</artifactId>
+    <artifactId>build-cause-run-condition</artifactId>
     <packaging>hpi</packaging>
-    <name>Extra Run Conditions Plugin</name>
+    <name>Build Cause Run Condition Plugin</name>
     <version>0.1-SNAPSHOT</version>
-    <description>Extra run conditions for the Run+Condition+Plugin, to be used with http://wiki.jenkins-ci.org/display/JENKINS/Run+Condition+Plugin</description>
-    <url>http://wiki.jenkins-ci.org/display/JENKINS/Extra+Run+Conditions+Plugin</url>
+    <description>Extendable build cause condition for the Run Condition Plugin, to be used with http://wiki.jenkins-ci.org/display/JENKINS/Run+Condition+Plugin</description>
+    <url>http://wiki.jenkins-ci.org/display/JENKINS/Build+Cause+Run+Condition</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -67,9 +67,9 @@
     </dependencies>
 
     <scm>
-        <url>https://github.com/jenkinsci/extra-run-conditions-plugin</url>
-        <connection>scm:git:git://github.com/jenkinsci/extra-run-conditions-plugin.git</connection>
-        <developerConnection>scm:git:git@github.com:jenkinsci/extra-run-conditions-plugin.git</developerConnection>
+        <url>https://github.com/jenkinsci/build-cause-run-condition-plugin</url>
+        <connection>scm:git:git://github.com/jenkinsci/build-cause-run-condition-plugin.git</connection>
+        <developerConnection>scm:git:git@github.com:jenkinsci/build-cause-run-condition-plugin.git</developerConnection>
     </scm>
 
     <issueManagement>

@@ -22,21 +22,40 @@
  * THE SOFTWARE.
  */
 
-package org.jenkins_ci.plugins.extra_run_conditions.extendedcausecondition;
+package org.jenkins_ci.plugins.build_cause_run_condition;
+import hudson.ExtensionPoint;
+import hudson.DescriptorExtensionList;
+import hudson.model.AbstractBuild;
+import hudson.model.BuildListener;
+import hudson.model.Describable;
 import hudson.model.Descriptor;
-
+import hudson.model.Hudson;
 /**
  * Abstract Build Cause condition that checks the build condition
  *
  * @author Chris Johnson
  */
+public abstract class BuildCauseCondition implements Describable<BuildCauseCondition>, ExtensionPoint {
 
-public abstract class BuildCauseConditionDescriptor extends Descriptor<BuildCauseCondition> {
-
-    protected BuildCauseConditionDescriptor() {
+    public static DescriptorExtensionList<BuildCauseCondition, BuildCauseConditionDescriptor> all() {
+        return Hudson.getInstance().<BuildCauseCondition, BuildCauseConditionDescriptor>getDescriptorList(BuildCauseCondition.class);
     }
 
-    protected BuildCauseConditionDescriptor(Class<? extends BuildCauseCondition> clazz) {
-        super(clazz);
+    /**
+     * Performs the check of the condition
+     *
+     * @return true if the condition is allowed
+     *         false if not allowed to proceed.
+     */
+    public abstract boolean runPerform(final AbstractBuild<?, ?> build, final BuildListener listener) throws InterruptedException;
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Descriptor<BuildCauseCondition> getDescriptor() {
+        return (Descriptor) Hudson.getInstance().getDescriptor(getClass());
     }
+
+
 }

@@ -22,14 +22,22 @@
  * THE SOFTWARE.
  */
 
-package org.jenkins_ci.plugins.extra_run_conditions.extendedcausecondition;
+package org.jenkins_ci.plugins.build_cause_run_condition;
 
 
 import hudson.Extension;
 import hudson.Util;
+import hudson.model.Cause;
+import hudson.model.Descriptor;
+import hudson.model.AutoCompletionCandidates;
+import hudson.model.Hudson;
+import hudson.model.User;
+import hudson.model.Job;
+import hudson.model.Item;
 import hudson.model.Cause.UpstreamCause;
 import hudson.model.Cause.UserCause;
-import hudson.model.*;
+import hudson.model.AbstractBuild;
+import hudson.model.BuildListener;
 import hudson.util.QuotedStringTokenizer;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
